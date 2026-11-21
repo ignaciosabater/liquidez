@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0F1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Liquidez">
+<title>Liquidez</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="demoflag" class="demoflag" hidden>MODO DEMO · libros simulados, no son datos de mercado</div>
+<main>
+  <div id="global"></div>
+
+  <div class="row between">
+    <div id="syms" class="chips"></div>
+    <button class="chip" data-act="settings" aria-label="Ajustes">⚙ Ajustes</button>
+  </div>
+  <div id="exchips" class="chips scroll"></div>
+  <div id="ranges" class="chips scroll"></div>
+  <div id="recbar" class="row recbar"></div>
+
+  <div id="compass"></div>
+
+  <div id="tabs" class="chips"></div>
+  <div id="nodata" class="dim pad small" hidden></div>
+  <section id="v-map" class="panel">
+    <canvas id="heat" class="cv" style="height:300px"></canvas>
+    <canvas id="imbc" class="cv" style="height:64px"></canvas>
+    <canvas id="depth" class="cv" style="height:96px"></canvas>
+  </section>
+  <section id="v-book" class="panel" hidden>
+    <div class="row pad"><span class="dim small">Agrupar</span><div id="groups" class="chips"></div></div>
+    <div id="bookTable"></div>
+  </section>
+  <div id="stats"></div>
+
+  <div class="panel">
+    <div class="sec">Liquidaciones · Panorama del mercado</div>
+    <div class="dim pad small">Fases 4 y 5: todavía no construidas. Necesitan el servidor de Cloudflare. Sin él, las liquidaciones solo se contarían desde que abres la app.</div>
+  </div>
+  <p class="dim small pad foot">No es una recomendación de inversión. Datos públicos de exchanges; pueden fallar o llegar con retraso. <span id="srcnote"></span></p>
+</main>
+
+<nav class="bottom"><button class="on" aria-current="page"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18h4V9H3zM10 18h4V4h-4zM17 18h4v-6h-4z"/></svg><span>Liquidez</span></button><button data-act="settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><span>Ajustes</span></button></nav>
+
+<dialog id="settings">
+  <h2>Acerca de</h2>
+  <p><b>Liquidez</b> muestra el libro de órdenes agregado de 7 fuentes públicas, un mapa de calor y la «Brújula», una lectura del libro para el próximo precio.</p>
+  <p><b>No es una recomendación de inversión.</b> Las órdenes pueden retirarse antes de ejecutarse y la Brújula no es una certeza.</p>
+  <p class="small dim">Datos: Binance, Bybit, OKX, Hyperliquid, Coinbase, Bitstamp, CoinGecko y alternative.me. Sin claves ni cuentas. La grabadora la para iOS si se bloquea la pantalla.</p>
+  <p class="small dim">Esta versión no incluye gráficos de velas, así que no usa TradingView Lightweight Charts. Si se añaden en «Flujo», aquí irá el crédito obligatorio.</p>
+  <button class="chip on" id="closeSettings">Cerrar</button>
+</dialog>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
